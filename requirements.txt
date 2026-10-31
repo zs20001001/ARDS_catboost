@@ -1,0 +1,28 @@
+# ============================================================================
+# requirements.txt - ARDS 28-day mortality calculator (CatBoost theta=6, .pkl)
+# ============================================================================
+# The model is a CatBoostClassifier saved inside a joblib bundle. A CatBoost
+# pickle stores the model object itself, so catboost MUST be pinned to the exact
+# version used at fit time; loading it under a different version either fails
+# outright or shifts the predicted probabilities. The version is recorded inside
+# the pickle (`versions.catboost`) and displayed in the app.
+#
+# Notes:
+#   * catboost==1.2.10 is the version in which catboost_theta6_model.pkl was
+#     fitted and verified. Change this pin only after re-exporting the model.
+#   * shap changed the default TreeExplainer background subsampling between
+#     releases; predictor7.py passes max_samples explicitly, and the pin avoids
+#     any further surprises in E[f(X)].
+#   * matplotlib is required for the SHAP waterfall figure (Agg backend).
+#   * scikit-learn is not pinned: it is not used for prediction, only pulled in
+#     as a dependency of shap. Switching the model to CatBoost removed the
+#     pickle-version sensitivity that forced an exact scikit-learn pin.
+# ============================================================================
+
+streamlit==1.66.1
+catboost==1.2.10
+shap==0.54.1
+joblib==1.5.3
+numpy==2.5.2
+pandas==2.3.3
+matplotlib==3.11.1

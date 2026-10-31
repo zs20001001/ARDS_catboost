@@ -1,0 +1,54 @@
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# Local / OS
+.DS_Store
+Thumbs.db
+~$*
+
+# Streamlit
+.streamlit/secrets.toml
+
+# ---------------------------------------------------------------------------
+# Superseded artefacts, kept locally only
+# ---------------------------------------------------------------------------
+predictor7_fixed.py
+requirements_fixed.txt
+model.pkl
+xgboost_model.pkl
+dataxgboost.csv
+OLD_600iter_catboost_final_model.pkl
+catboost_final_model.pkl
+catboost_final_model.cbm
+datacatboost.csv
+catboost_info/
+shap_summary_patient.csv
+random_forest_final_model.pkl
+
+# Figures and helper scripts from earlier/experimental versions
+# (not referenced by README). To publish screenshots later, generate them from
+# the current app and remove the *.png rule before committing.
+*.png
+shap_waterfall_beeswarm.py
+train.py
+
+# ---------------------------------------------------------------------------
+# Patient-level data - NEVER publish (contains identifiable clinical records)
+# ---------------------------------------------------------------------------
+最终训练集*.xlsx
+内部验证*.xls*
+最终外部*.xlsx
+~$最终外部.xlsx
+*.xlsx
+*.xls
+
+# ---------------------------------------------------------------------------
+# Never ignore the deployed model and its SHAP background
+# ---------------------------------------------------------------------------
+!catboost_theta6_model.pkl
+!cohort_features.csv
+!requirements.txt
